@@ -12,14 +12,23 @@
     }
   ],
   "scripts": {
-    "test": "node test.js"
+    "postinstall": "node types-to-js",
+    "test": "node test.js && ./node_modules/.bin/browserify test.js | node"
   },
   "dependencies": {},
   "description": "A comprehensive library for mime-type mapping",
-  "devDependencies": {},
-  "keywords": ["util", "mime"],
+  "devDependencies": {
+    "browserify": "~1.x"
+  },
+  "keywords": [
+    "util",
+    "mime"
+  ],
   "main": "mime.js",
   "name": "mime",
-  "repository": {"url": "https://github.com/broofa/node-mime", "type": "git"},
+  "repository": {
+    "url": "https://github.com/broofa/node-mime",
+    "type": "git"
+  },
   "version": "1.2.9"
 }

@@ -84,12 +84,17 @@ Mime.prototype.extension = function(mimeType) {
 // Default instance
 var mime = new Mime();
 
-// Load local copy of
-// http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
-mime.load(path.join(__dirname, 'types/mime.types'));
+if (process.browser) { // browserify support
+  mime.define(require('./types/mime.types.js'));
+  mime.define(require('./types/node.types.js'));
+} else {
+  // Load local copy of
+  // http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
+  mime.load(path.join(__dirname, 'types/mime.types'));
 
-// Load additional types from node.js community
-mime.load(path.join(__dirname, 'types/node.types'));
+  // Load additional types from node.js community
+  mime.load(path.join(__dirname, 'types/node.types'));  
+}
 
 // Default type
 mime.default_type = mime.lookup('bin');
