@@ -11,6 +11,9 @@
       "email": "benjamin@benjaminthomas.org"
     }
   ],
+  "scripts": {
+    "test": "node test.js"
+  },
   "dependencies": {},
   "description": "A comprehensive library for mime-type mapping",
   "devDependencies": {},
